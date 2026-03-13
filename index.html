@@ -27,8 +27,7 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { display: flex; animation: marquee 40s linear infinite; }
         
-        .hover-red:hover { color: var(--brand-red); transition: color 0.3s ease; }
-        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.3s ease; }
+        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.3s ease; display: inline-block; }
         .btn-primary:hover { background-color: var(--brand-red); color: #fff; }
     </style>
 </head>
@@ -81,7 +80,7 @@
         </div>
     </section>
 
-    <!-- 4. About Section (Dheeraj Kumar Spotlight) -->
+    <!-- 4. About Section (Dheeraj Kumar Spotlight with Original Image) -->
     <section id="about" class="bg-white text-black py-32 md:py-48 overflow-hidden reveal">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center">
@@ -109,8 +108,8 @@
                 </div>
                 <div class="lg:col-span-5 relative">
                     <div class="aspect-[4/5] overflow-hidden shadow-2xl bg-zinc-100 border-[20px] border-zinc-50">
+                        <!-- Updated with your original picture -->
                         <img src="images/dheeraj.jpg" alt="Dheeraj Kumar Founder" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-
                     </div>
                     <div class="absolute -bottom-10 -left-10 bg-black p-8 text-white border-l-8 border-red-600 shadow-2xl">
                         <span class="text-red-600 text-[9px] font-black uppercase tracking-[0.5em] mb-2 block">Chief Architect</span>
@@ -128,31 +127,26 @@
             <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">360° Expertise</h2>
         </div>
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900 border border-zinc-900">
-            <!-- Service 1 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="target" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Strategic Planning</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Deep-dive market analysis and consumer insight mapping to find your brand’s bullseye.</p>
             </div>
-            <!-- Service 2 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="zap" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Disruptive Creative</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Breaking through the noise with bold ideas that demand attention and drive action.</p>
             </div>
-            <!-- Service 3 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="globe" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">360 Media Buying</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Precision-targeted placement across digital, social, OOH, and traditional channels.</p>
             </div>
-            <!-- Service 4 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="trophy" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Cricket OOH</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Surgical media planning for cricket stadiums, on-ground branding, and sports OOH.</p>
             </div>
-            <!-- Service 5 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="camera" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Content Production</h3>
@@ -167,7 +161,7 @@
             <div class="flex-1">
                 <span class="text-red-600 text-xs font-black uppercase tracking-widest mb-4 block">Sports Integration</span>
                 <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Cricket <br> <span class="text-outline">Domination</span></h2>
-                <p class="text-zinc-400 text-xl font-light leading-relaxed mb-12">We bridge the gap between global brands and the world of cricket, creating high-impact stadium experiences and 360° media recall.</p>
+                <p class="text-zinc-400 text-xl font-light leading-relaxed mb-12">We bridge the gap between global brands and the world of cricket, creating high-impact stadium experiences.</p>
                 <div class="flex items-center gap-6">
                     <div class="w-16 h-16 bg-red-600 flex items-center justify-center rounded-sm">
                         <i data-lucide="award" class="text-white"></i>
@@ -184,7 +178,7 @@
         </div>
     </section>
 
-    <!-- 7. Creative Portfolio -->
+    <!-- 7. Portfolio Gallery -->
     <section id="portfolio" class="py-32 px-6 reveal">
         <div class="container mx-auto">
             <div class="mb-24 text-right">
@@ -210,22 +204,7 @@
         </div>
     </section>
 
-    <!-- 8. Brief Generator UI -->
-    <section class="py-32 bg-zinc-950 reveal">
-        <div class="container mx-auto px-6 max-w-4xl text-center">
-            <h2 class="text-5xl font-black uppercase tracking-tighter mb-8">Synthesize Your <span class="text-red-600">Brief</span></h2>
-            <p class="text-zinc-500 mb-12 uppercase tracking-widest text-xs">AI-Powered Strategic Foundation</p>
-            <div class="glass p-12 text-left space-y-8">
-                <div>
-                    <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-4 block">Campaign Objective</label>
-                    <input type="text" placeholder="e.g. Global Market Disruption" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition text-xl font-light">
-                </div>
-                <button class="w-full bg-red-600 text-white py-6 font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">Generate Strategic Brief</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. Footer (Updated Phone & Branches) -->
+    <!-- 8. Footer (Updated Phone & Branches) -->
     <footer id="contact" class="bg-black pt-32 pb-12 border-t border-zinc-900 reveal">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-32">
@@ -275,24 +254,18 @@
                 </div>
             </div>
             
-            <!-- Visitor Counter UI -->
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900 gap-8">
                 <div class="flex items-center gap-8">
                     <div class="text-2xl font-black tracking-tighter">
                         <span class="bg-red-600 px-1">BRAND</span>ARCHER
                     </div>
-                    <div class="h-8 w-[1px] bg-zinc-800 hidden md:block"></div>
-                    <div class="flex flex-col">
-                        <span class="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-600">Live Visitor Pulse</span>
-                        <span class="text-xl font-black text-white">000,152</span>
-                    </div>
+                    <p class="text-zinc-600 text-[9px] uppercase tracking-[0.4em]">© 2026 BrandArcher Advertising. Precision Engineered.</p>
                 </div>
-                <p class="text-zinc-600 text-[9px] uppercase tracking-[0.4em]">© 2026 BrandArcher Advertising. Precision Engineered.</p>
             </div>
         </div>
     </footer>
 
-    <!-- 10. WhatsApp Chat Widget UI -->
+    <!-- WhatsApp Chat Widget UI -->
     <div class="fixed bottom-8 right-8 z-[100]">
         <a href="https://wa.me/911204331507" target="_blank" class="flex items-center gap-4 bg-red-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-white hover:text-black transition-all duration-500 group">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
@@ -305,10 +278,7 @@
 
     <!-- Scripts -->
     <script>
-        // Initialize Icons
         lucide.createIcons();
-
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -319,20 +289,13 @@
                 nav.classList.add('py-8');
             }
         });
-
-        // Reveal on Scroll Logic
         const reveal = () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
             });
         }
         window.addEventListener('scroll', reveal);
-        reveal(); // Initial check
+        reveal();
     </script>
 </body>
 </html>
