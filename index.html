@@ -1,88 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrandArcher Advertising | 360° Precision Agency</title>
     
-    <!-- External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Anton&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         :root { --brand-red: #dc2626; }
-        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
         .font-display { font-family: 'Anton', sans-serif; }
         
         /* Custom UI Elements */
-        .text-outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.15); }
+        .text-outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); }
         .bg-grid { background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
         .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
         
         /* Animations */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { display: flex; animation: marquee 40s linear infinite; }
+        .animate-marquee { display: flex; width: max-content; animation: marquee 30s linear infinite; }
         
-        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.3s ease; display: inline-block; }
-        .btn-primary:hover { background-color: var(--brand-red); color: #fff; }
+        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.4s ease; display: inline-block; position: relative; overflow: hidden; }
+        .btn-primary:hover { background-color: var(--brand-red); color: #fff; transform: translateY(-2px); }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu.open { transform: translateX(0); }
     </style>
 </head>
 <body class="bg-grid">
 
-    <!-- 1. Navbar -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-8 px-6 md:px-12 flex justify-between items-center">
         <a href="#home" class="text-2xl font-black tracking-tighter flex items-center gap-1">
             <span class="bg-red-600 text-white px-1">BRAND</span>ARCHER
         </a>
-        <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+        
+        <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 items-center">
             <a href="#about" class="hover:text-white transition">The Visionary</a>
             <a href="#services" class="hover:text-white transition">Expertise</a>
             <a href="#portfolio" class="hover:text-white transition">Work</a>
             <a href="#cricket" class="hover:text-white transition">Cricket</a>
-            <a href="#contact" class="bg-white text-black px-6 py-3 hover:bg-red-600 hover:text-white transition">Get in Touch</a>
+            <a href="#contact" class="bg-white text-black px-6 py-3 hover:bg-red-600 hover:text-white transition ml-4">Get in Touch</a>
         </div>
-        <button class="lg:hidden text-white"><i data-lucide="menu"></i></button>
+
+        <button id="menu-toggle" class="lg:hidden text-white p-2">
+            <i data-lucide="menu"></i>
+        </button>
     </nav>
 
-    <!-- 2. Hero Section -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[60] flex flex-col justify-center items-center gap-8 text-2xl font-display uppercase tracking-widest transform translate-x-full transition-transform duration-500 lg:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-white"><i data-lucide="x" class="w-10 h-10"></i></button>
+        <a href="#about" class="mobile-link hover:text-red-600">The Visionary</a>
+        <a href="#services" class="mobile-link hover:text-red-600">Expertise</a>
+        <a href="#portfolio" class="mobile-link hover:text-red-600">Work</a>
+        <a href="#cricket" class="mobile-link hover:text-red-600">Cricket</a>
+        <a href="#contact" class="mobile-link text-red-600 border border-red-600 px-8 py-2">Contact</a>
+    </div>
+
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2400" 
-                 class="w-full h-full object-cover opacity-30 brightness-50" alt="Hero" referrerPolicy="no-referrer">
+                 class="w-full h-full object-cover opacity-30 brightness-50" alt="Hero">
             <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
         </div>
         <div class="relative z-10 text-center px-6">
-            <span class="text-red-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8 block reveal">Precision & Disruption</span>
-            <h1 class="font-display text-[15vw] md:text-[10vw] leading-[0.85] uppercase tracking-tighter reveal" style="transition-delay: 0.2s;">
+            <span class="text-red-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8 block reveal active">Precision & Disruption</span>
+            <h1 class="font-display text-[15vw] md:text-[10vw] leading-[0.85] uppercase tracking-tighter reveal active" style="transition-delay: 0.2s;">
                 Precision <br> <span class="text-outline">Meets</span> <br> <span class="text-red-600">Disruption</span>
             </h1>
-            <p class="mt-10 text-zinc-400 text-xs md:text-sm font-light tracking-[0.4em] uppercase max-w-3xl mx-auto reveal" style="transition-delay: 0.4s;">
+            <p class="mt-10 text-zinc-400 text-xs md:text-sm font-light tracking-[0.4em] uppercase max-w-3xl mx-auto reveal active" style="transition-delay: 0.4s;">
                 Leading <span class="text-white font-black italic">360° ADVERTISING AGENCY</span>
             </p>
-            <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center reveal" style="transition-delay: 0.6s;">
+            <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center reveal active" style="transition-delay: 0.6s;">
                 <a href="#portfolio" class="btn-primary">Explore Portfolio</a>
                 <a href="#contact" class="border border-white/20 text-white px-12 py-5 font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all backdrop-blur-md">Contact Us</a>
             </div>
         </div>
-    </section>
-
-    <!-- 3. Pulse News (Marquee) -->
-    <section class="py-20 bg-black overflow-hidden border-y border-white/5">
-        <div class="animate-marquee whitespace-nowrap">
-            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Targeted Anarchy</span>
-            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">Precision 2026</span>
-            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Global Disruption</span>
-            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">360° Strategy</span>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <i data-lucide="chevron-down"></i>
         </div>
     </section>
 
-    <!-- 4. About Section (Dheeraj Kumar Spotlight with Original Image) -->
-    <section id="about" class="bg-white text-black py-32 md:py-48 overflow-hidden reveal">
-        <div class="container mx-auto px-6">
+    <section class="py-20 bg-black overflow-hidden border-y border-white/5">
+        <div class="animate-marquee">
+            <div class="flex">
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Targeted Anarchy</span>
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">Precision 2026</span>
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Global Disruption</span>
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">360° Strategy</span>
+            </div>
+            <div class="flex">
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Targeted Anarchy</span>
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">Precision 2026</span>
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Global Disruption</span>
+                <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">360° Strategy</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-white text-black py-32 md:py-48 overflow-hidden">
+        <div class="container mx-auto px-6 reveal">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center">
                 <div class="lg:col-span-7">
                     <div class="flex items-center gap-4 mb-8">
@@ -93,7 +115,7 @@
                         Dheeraj <br> <span class="text-zinc-200 block md:ml-20">Kumar</span>
                     </h2>
                     <p class="text-xl md:text-2xl leading-relaxed text-zinc-700 font-light max-w-2xl mb-12">
-                        At BrandArcher Advertising, we architect trends. Under my leadership, we champion <span class="font-black text-black underline decoration-red-600 decoration-4 underline-offset-8">Targeted Anarchy</span>—the intersection of surgical precision and creative disruption.
+                        At BrandArcher Advertising, we architect trends. Under my leadership, we champion <span class="font-black text-black underline decoration-red-600 decoration-4 underline-offset-8 italic">Targeted Anarchy</span>—the intersection of surgical precision and creative disruption.
                     </p>
                     <div class="border-t border-zinc-100 pt-12">
                         <p class="text-2xl md:text-3xl font-black italic text-black mb-8 leading-tight">"Precision is the foundation of disruption. My mission is to ensure your brand leaves a permanent mark."</p>
@@ -107,26 +129,24 @@
                     </div>
                 </div>
                 <div class="lg:col-span-5 relative">
-                    <div class="aspect-[4/5] overflow-hidden shadow-2xl bg-zinc-100 border-[20px] border-zinc-50">
-                        <!-- Updated with your original picture -->
+                    <div class="aspect-[4/5] overflow-hidden shadow-2xl bg-zinc-100 border-[15px] md:border-[20px] border-zinc-50">
                         <img src="images/dheeraj.jpg" alt="Dheeraj Kumar Founder" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
                     </div>
-                    <div class="absolute -bottom-10 -left-10 bg-black p-8 text-white border-l-8 border-red-600 shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-black p-6 md:p-8 text-white border-l-8 border-red-600 shadow-2xl">
                         <span class="text-red-600 text-[9px] font-black uppercase tracking-[0.5em] mb-2 block">Chief Architect</span>
-                        <h3 class="text-3xl font-black uppercase tracking-tighter leading-none">Dheeraj <br> Kumar</h3>
+                        <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none">Dheeraj <br> Kumar</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Services Section (Complete 5 Services) -->
-    <section id="services" class="bg-black py-32 border-y border-zinc-900 reveal">
-        <div class="container mx-auto px-6 text-center mb-24">
+    <section id="services" class="bg-black py-32 border-y border-zinc-900">
+        <div class="container mx-auto px-6 text-center mb-24 reveal">
             <span class="text-red-600 text-xs font-black tracking-widest uppercase mb-4 block">Capabilities</span>
             <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">360° Expertise</h2>
         </div>
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900 border border-zinc-900">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900 border border-zinc-900 reveal">
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="target" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Strategic Planning</h3>
@@ -155,9 +175,8 @@
         </div>
     </section>
 
-    <!-- 6. Cricket Media Section -->
-    <section id="cricket" class="py-32 bg-zinc-950 reveal">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-20">
+    <section id="cricket" class="py-32 bg-zinc-950">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-20 reveal">
             <div class="flex-1">
                 <span class="text-red-600 text-xs font-black uppercase tracking-widest mb-4 block">Sports Integration</span>
                 <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Cricket <br> <span class="text-outline">Domination</span></h2>
@@ -178,25 +197,24 @@
         </div>
     </section>
 
-    <!-- 7. Portfolio Gallery -->
-    <section id="portfolio" class="py-32 px-6 reveal">
+    <section id="portfolio" class="py-32 px-6">
         <div class="container mx-auto">
-            <div class="mb-24 text-right">
+            <div class="mb-24 text-right reveal">
                 <span class="text-red-600 text-xs font-black uppercase tracking-widest">Portfolio</span>
                 <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mt-4">Spatial <span class="text-outline">Innovations</span></h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="relative group overflow-hidden h-[650px] glass">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal">
+                <div class="relative group overflow-hidden h-[500px] md:h-[650px] glass">
                     <img src="https://images.unsplash.com/photo-1582213726892-2761781cd3d2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
-                        <h3 class="text-4xl font-black uppercase tracking-tighter">Hello Basmati Pavilion</h3>
+                        <h3 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Hello Basmati Pavilion</h3>
                         <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">Exhibition Architecture & Design</p>
                     </div>
                 </div>
-                <div class="relative group overflow-hidden h-[650px] glass">
+                <div class="relative group overflow-hidden h-[500px] md:h-[650px] glass">
                     <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
-                        <h3 class="text-4xl font-black uppercase tracking-tighter">Sunstar Global Stand</h3>
+                        <h3 class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Sunstar Global Stand</h3>
                         <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">360° Brand Environment</p>
                     </div>
                 </div>
@@ -204,22 +222,20 @@
         </div>
     </section>
 
-    <!-- 8. Footer (Updated Phone & Branches) -->
-    <footer id="contact" class="bg-black pt-32 pb-12 border-t border-zinc-900 reveal">
-        <div class="container mx-auto px-6">
+    <footer id="contact" class="bg-black pt-32 pb-12 border-t border-zinc-900">
+        <div class="container mx-auto px-6 reveal">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-32">
                 <div>
                     <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-12">Let's <br> <span class="text-red-600">Build</span></h2>
                     <div class="space-y-8">
-                        <a href="mailto:ceo@brandarcher.in" class="flex items-center gap-6 text-2xl md:text-4xl font-light hover:text-red-600 transition-colors">
+                        <a href="mailto:ceo@brandarcher.in" class="flex items-center gap-6 text-xl md:text-3xl font-light hover:text-red-600 transition-colors">
                             <i data-lucide="mail" class="text-red-600"></i> ceo@brandarcher.in
                         </a>
-                        <a href="tel:+911204331507" class="flex items-center gap-6 text-2xl md:text-4xl font-light hover:text-red-600 transition-colors">
+                        <a href="tel:+911204331507" class="flex items-center gap-6 text-xl md:text-3xl font-light hover:text-red-600 transition-colors">
                             <i data-lucide="phone" class="text-red-600"></i> +91-120-4331507
                         </a>
                     </div>
                     
-                    <!-- Branch Offices -->
                     <div class="mt-20">
                         <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-10">Branch Network</h4>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-12">
@@ -245,17 +261,17 @@
                     </div>
                 </div>
                 <div class="glass p-12">
-                    <form class="space-y-10">
-                        <input type="text" placeholder="FULL NAME" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]">
-                        <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]">
-                        <textarea placeholder="PROJECT BRIEF" rows="4" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]"></textarea>
-                        <button class="w-full bg-red-600 text-white py-6 font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">Send Synthesis Request</button>
+                    <form class="space-y-10" onsubmit="event.preventDefault(); alert('Message Received!');">
+                        <input type="text" required placeholder="FULL NAME" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]">
+                        <input type="email" required placeholder="EMAIL ADDRESS" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]">
+                        <textarea required placeholder="PROJECT BRIEF" rows="4" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]"></textarea>
+                        <button type="submit" class="w-full bg-red-600 text-white py-6 font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">Send Synthesis Request</button>
                     </form>
                 </div>
             </div>
             
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900 gap-8">
-                <div class="flex items-center gap-8">
+                <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
                     <div class="text-2xl font-black tracking-tighter">
                         <span class="bg-red-600 px-1">BRAND</span>ARCHER
                     </div>
@@ -265,37 +281,56 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Chat Widget UI -->
     <div class="fixed bottom-8 right-8 z-[100]">
-        <a href="https://wa.me/911204331507" target="_blank" class="flex items-center gap-4 bg-red-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-white hover:text-black transition-all duration-500 group">
+        <a href="https://wa.me/911204331507" target="_blank" class="flex items-center gap-4 bg-red-600 text-white px-6 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
-            <div class="flex flex-col leading-none">
+            <div class="hidden md:flex flex-col leading-none">
                 <span class="text-[10px] font-black uppercase tracking-widest">Chat with us</span>
                 <span class="text-[8px] font-bold uppercase tracking-widest opacity-70 mt-1">Strategist Online</span>
             </div>
         </a>
     </div>
 
-    <!-- Scripts -->
     <script>
+        // Initialize Icons
         lucide.createIcons();
+
+        // Navbar Scroll Logic
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                nav.classList.add('bg-black/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-zinc-900');
+                nav.classList.add('bg-black/90', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-zinc-900');
                 nav.classList.remove('py-8');
             } else {
-                nav.classList.remove('bg-black/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-zinc-900');
+                nav.classList.remove('bg-black/90', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-zinc-900');
                 nav.classList.add('py-8');
             }
         });
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Reveal Animation Logic
         const reveal = () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            const items = document.querySelectorAll('.reveal');
+            items.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    el.classList.add('active');
+                }
             });
         }
         window.addEventListener('scroll', reveal);
-        reveal();
+        window.addEventListener('load', reveal);
     </script>
 </body>
 </html>
