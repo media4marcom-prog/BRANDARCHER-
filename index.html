@@ -3,211 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brandarcher | 360° Live Advertising Hub</title>
+    <title>BrandArcher Advertising | 360° Precision Agency</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- External Assets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Anton&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        :root {
-            --bg-main: #0A0A0A;
-            --bg-section: #111111;
-            --accent: #E50914;
-            --text-main: #FFFFFF;
-            --text-secondary: #B8B8B8;
-            --border: #222222;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg-main); color: var(--text-secondary); }
-
-        /* HEADER */
-        header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; border-bottom: 1px solid var(--border);
-            background: rgba(10, 10, 10, 0.95); position: sticky; top: 0; z-index: 1000;
-        }
-        .logo { color: var(--accent); font-size: 26px; font-weight: 700; letter-spacing: 2px; text-decoration: none; }
-        nav a { color: var(--text-main); margin-left: 25px; text-decoration: none; font-size: 14px; }
-
-        /* HERO */
-        .hero {
-            height: 70vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600');
-            background-size: cover;
-        }
-
-        /* LIVE NEWS SECTION */
-        .live-news-container {
-            padding: 60px 8%;
-            background: var(--bg-section);
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .news-card {
-            background: var(--bg-main);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 10px;
-            height: 400px;
-            overflow-y: auto;
-        }
-        .news-card h3 { color: var(--accent); margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .live-tag {
-            background: var(--accent);
-            color: white;
-            padding: 2px 8px;
-            font-size: 10px;
-            border-radius: 3px;
-            vertical-align: middle;
-            margin-right: 10px;
-            animation: blink 1.5s infinite;
-        }
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.3;} 100% {opacity: 1;} }
-
-        /* SERVICES */
-        .section { padding: 80px 8%; text-align: center; }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .card {
-            background: var(--bg-section);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            transition: 0.3s;
-        }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .card i { font-size: 30px; color: var(--accent); margin-bottom: 15px; }
-
-        /* WHATSAPP WORLDWIDE */
-        .wpp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            z-index: 9999;
-            text-decoration: none;
-        }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid var(--border); }
-
-        @media (max-width: 768px) {
-            .news-grid { grid-template-columns: 1fr; }
-        }
+        :root { --brand-red: #dc2626; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+        .font-display { font-family: 'Anton', sans-serif; }
+        
+        /* Custom UI Elements */
+        .text-outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.15); }
+        .bg-grid { background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; animation: marquee 40s linear infinite; }
+        
+        .hover-red:hover { color: var(--brand-red); transition: color 0.3s ease; }
+        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--brand-red); color: #fff; }
     </style>
 </head>
-<body>
+<body class="bg-grid">
 
-    <a href="https://api.whatsapp.com/send?phone=91XXXXXXXXXX&text=Hello%20Brandarcher%21%20I%20am%20interested%20in%20Global%20Advertising%20solutions." class="wpp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- 1. Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-8 px-6 md:px-12 flex justify-between items-center">
+        <a href="#home" class="text-2xl font-black tracking-tighter flex items-center gap-1">
+            <span class="bg-red-600 text-white px-1">BRAND</span>ARCHER
+        </a>
+        <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+            <a href="#about" class="hover:text-white transition">The Visionary</a>
+            <a href="#services" class="hover:text-white transition">Expertise</a>
+            <a href="#portfolio" class="hover:text-white transition">Work</a>
+            <a href="#cricket" class="hover:text-white transition">Cricket</a>
+            <a href="#contact" class="bg-white text-black px-6 py-3 hover:bg-red-600 hover:text-white transition">Get in Touch</a>
+        </div>
+        <button class="lg:hidden text-white"><i data-lucide="menu"></i></button>
+    </nav>
 
-    <header>
-        <div class="logo">BRANDARCHER</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#live-news">Live News</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="hero" id="home">
-        <h1><span class="live-tag">LIVE</span>360° Global Advertising</h1>
-        <p>Connecting Brands to Stadiums, Screens, and Societies Worldwide.</p>
+    <!-- 2. Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2400" 
+                 class="w-full h-full object-cover opacity-30 brightness-50" alt="Hero" referrerPolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <span class="text-red-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8 block reveal">Precision & Disruption</span>
+            <h1 class="font-display text-[15vw] md:text-[10vw] leading-[0.85] uppercase tracking-tighter reveal" style="transition-delay: 0.2s;">
+                Precision <br> <span class="text-outline">Meets</span> <br> <span class="text-red-600">Disruption</span>
+            </h1>
+            <p class="mt-10 text-zinc-400 text-xs md:text-sm font-light tracking-[0.4em] uppercase max-w-3xl mx-auto reveal" style="transition-delay: 0.4s;">
+                Leading <span class="text-white font-black italic">360° ADVERTISING AGENCY</span>
+            </p>
+            <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center reveal" style="transition-delay: 0.6s;">
+                <a href="#portfolio" class="btn-primary">Explore Portfolio</a>
+                <a href="#contact" class="border border-white/20 text-white px-12 py-5 font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all backdrop-blur-md">Contact Us</a>
+            </div>
+        </div>
     </section>
 
-    <section class="live-news-container" id="live-news">
-        <h2 style="color: white; margin-bottom: 30px; text-align: center;">Media & Advertising Live Feed</h2>
-        <div class="news-grid">
+    <!-- 3. Pulse News (Marquee) -->
+    <section class="py-20 bg-black overflow-hidden border-y border-white/5">
+        <div class="animate-marquee whitespace-nowrap">
+            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Targeted Anarchy</span>
+            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">Precision 2026</span>
+            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-white/5 italic">Global Disruption</span>
+            <span class="text-6xl md:text-8xl font-black uppercase tracking-tighter mx-10 text-red-600 italic">360° Strategy</span>
+        </div>
+    </section>
+
+    <!-- 4. About Section (Dheeraj Kumar Spotlight) -->
+    <section id="about" class="bg-white text-black py-32 md:py-48 overflow-hidden reveal">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-[2px] bg-red-600"></div>
+                        <span class="text-red-600 text-xs font-black tracking-[0.5em] uppercase">The Visionary</span>
+                    </div>
+                    <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-12">
+                        Dheeraj <br> <span class="text-zinc-200 block md:ml-20">Kumar</span>
+                    </h2>
+                    <p class="text-xl md:text-2xl leading-relaxed text-zinc-700 font-light max-w-2xl mb-12">
+                        At BrandArcher Advertising, we architect trends. Under my leadership, we champion <span class="font-black text-black underline decoration-red-600 decoration-4 underline-offset-8">Targeted Anarchy</span>—the intersection of surgical precision and creative disruption.
+                    </p>
+                    <div class="border-t border-zinc-100 pt-12">
+                        <p class="text-2xl md:text-3xl font-black italic text-black mb-8 leading-tight">"Precision is the foundation of disruption. My mission is to ensure your brand leaves a permanent mark."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-[1px] bg-zinc-300"></div>
+                            <div>
+                                <p class="text-xl font-black uppercase tracking-widest">Founder & CEO</p>
+                                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-red-600 mt-1">BrandArcher Advertising</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative">
+                    <div class="aspect-[4/5] overflow-hidden shadow-2xl bg-zinc-100 border-[20px] border-zinc-50">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=1200" alt="Dheeraj Kumar" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="absolute -bottom-10 -left-10 bg-black p-8 text-white border-l-8 border-red-600 shadow-2xl">
+                        <span class="text-red-600 text-[9px] font-black uppercase tracking-[0.5em] mb-2 block">Chief Architect</span>
+                        <h3 class="text-3xl font-black uppercase tracking-tighter leading-none">Dheeraj <br> Kumar</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Services Section (Complete 5 Services) -->
+    <section id="services" class="bg-black py-32 border-y border-zinc-900 reveal">
+        <div class="container mx-auto px-6 text-center mb-24">
+            <span class="text-red-600 text-xs font-black tracking-widest uppercase mb-4 block">Capabilities</span>
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">360° Expertise</h2>
+        </div>
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900 border border-zinc-900">
+            <!-- Service 1 -->
+            <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
+                <i data-lucide="target" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-black uppercase tracking-widest mb-6">Strategic Planning</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Deep-dive market analysis and consumer insight mapping to find your brand’s bullseye.</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
+                <i data-lucide="zap" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-black uppercase tracking-widest mb-6">Disruptive Creative</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Breaking through the noise with bold ideas that demand attention and drive action.</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
+                <i data-lucide="globe" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-black uppercase tracking-widest mb-6">360 Media Buying</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Precision-targeted placement across digital, social, OOH, and traditional channels.</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
+                <i data-lucide="trophy" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-black uppercase tracking-widest mb-6">Cricket OOH</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Surgical media planning for cricket stadiums, on-ground branding, and sports OOH.</p>
+            </div>
+            <!-- Service 5 -->
+            <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
+                <i data-lucide="camera" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-black uppercase tracking-widest mb-6">Content Production</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">High-end film, photography, and digital assets crafted for a multi-platform world.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Cricket Media Section -->
+    <section id="cricket" class="py-32 bg-zinc-950 reveal">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-20">
+            <div class="flex-1">
+                <span class="text-red-600 text-xs font-black uppercase tracking-widest mb-4 block">Sports Integration</span>
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Cricket <br> <span class="text-outline">Domination</span></h2>
+                <p class="text-zinc-400 text-xl font-light leading-relaxed mb-12">We bridge the gap between global brands and the world of cricket, creating high-impact stadium experiences and 360° media recall.</p>
+                <div class="flex items-center gap-6">
+                    <div class="w-16 h-16 bg-red-600 flex items-center justify-center rounded-sm">
+                        <i data-lucide="award" class="text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-black uppercase tracking-tighter">Official Media Partner</p>
+                        <p class="text-zinc-500 text-xs uppercase tracking-widest">Global Cricket Tournaments</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 glass p-4 rotate-2 hover:rotate-0 transition-all duration-700">
+                <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&q=80&w=1200" class="w-full grayscale hover:grayscale-0 transition-all" alt="Cricket Stadium">
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Creative Portfolio -->
+    <section id="portfolio" class="py-32 px-6 reveal">
+        <div class="container mx-auto">
+            <div class="mb-24 text-right">
+                <span class="text-red-600 text-xs font-black uppercase tracking-widest">Portfolio</span>
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mt-4">Spatial <span class="text-outline">Innovations</span></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="relative group overflow-hidden h-[650px] glass">
+                    <img src="https://images.unsplash.com/photo-1582213726892-2761781cd3d2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
+                        <h3 class="text-4xl font-black uppercase tracking-tighter">Hello Basmati Pavilion</h3>
+                        <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">Exhibition Architecture & Design</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden h-[650px] glass">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
+                        <h3 class="text-4xl font-black uppercase tracking-tighter">Sunstar Global Stand</h3>
+                        <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">360° Brand Environment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Brief Generator UI -->
+    <section class="py-32 bg-zinc-950 reveal">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-5xl font-black uppercase tracking-tighter mb-8">Synthesize Your <span class="text-red-600">Brief</span></h2>
+            <p class="text-zinc-500 mb-12 uppercase tracking-widest text-xs">AI-Powered Strategic Foundation</p>
+            <div class="glass p-12 text-left space-y-8">
+                <div>
+                    <label class="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-4 block">Campaign Objective</label>
+                    <input type="text" placeholder="e.g. Global Market Disruption" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition text-xl font-light">
+                </div>
+                <button class="w-full bg-red-600 text-white py-6 font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">Generate Strategic Brief</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer (Updated Phone & Branches) -->
+    <footer id="contact" class="bg-black pt-32 pb-12 border-t border-zinc-900 reveal">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-32">
+                <div>
+                    <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-12">Let's <br> <span class="text-red-600">Build</span></h2>
+                    <div class="space-y-8">
+                        <a href="mailto:ceo@brandarcher.in" class="flex items-center gap-6 text-2xl md:text-4xl font-light hover:text-red-600 transition-colors">
+                            <i data-lucide="mail" class="text-red-600"></i> ceo@brandarcher.in
+                        </a>
+                        <a href="tel:+911204331507" class="flex items-center gap-6 text-2xl md:text-4xl font-light hover:text-red-600 transition-colors">
+                            <i data-lucide="phone" class="text-red-600"></i> +91-120-4331507
+                        </a>
+                    </div>
+                    
+                    <!-- Branch Offices -->
+                    <div class="mt-20">
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-10">Branch Network</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-12">
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+                                <span class="w-1.5 h-1.5 bg-red-600"></span> Lucknow
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+                                <span class="w-1.5 h-1.5 bg-red-600"></span> Noida
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+                                <span class="w-1.5 h-1.5 bg-red-600"></span> Ludhiana
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+                                <span class="w-1.5 h-1.5 bg-red-600"></span> Vadodara
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+                                <span class="w-1.5 h-1.5 bg-red-600"></span> Dehradun
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+                                <span class="w-1.5 h-1.5 bg-red-600"></span> Mumbai
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass p-12">
+                    <form class="space-y-10">
+                        <input type="text" placeholder="FULL NAME" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]">
+                        <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]">
+                        <textarea placeholder="PROJECT BRIEF" rows="4" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 transition font-black uppercase tracking-widest text-[10px]"></textarea>
+                        <button class="w-full bg-red-600 text-white py-6 font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">Send Synthesis Request</button>
+                    </form>
+                </div>
+            </div>
             
-            <div class="news-card">
-                <h3><i class="fas fa-globe"></i> Worldwide Marketing News</h3>
-                <div id="rss-global">
-                    <p style="font-size: 13px;">Loading live global trends...</p>
-                    <ul style="list-style: none; padding-top: 10px;" id="global-list">
-                        </ul>
+            <!-- Visitor Counter UI -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900 gap-8">
+                <div class="flex items-center gap-8">
+                    <div class="text-2xl font-black tracking-tighter">
+                        <span class="bg-red-600 px-1">BRAND</span>ARCHER
+                    </div>
+                    <div class="h-8 w-[1px] bg-zinc-800 hidden md:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-600">Live Visitor Pulse</span>
+                        <span class="text-xl font-black text-white">000,152</span>
+                    </div>
                 </div>
+                <p class="text-zinc-600 text-[9px] uppercase tracking-[0.4em]">© 2026 BrandArcher Advertising. Precision Engineered.</p>
             </div>
-
-            <div class="news-card">
-                <h3><i class="fas fa-flag"></i> India Media Insights</h3>
-                <div id="rss-india">
-                    <p style="font-size: 13px;">Fetching latest Indian media news...</p>
-                    <ul style="list-style: none; padding-top: 10px;" id="india-list">
-                        </ul>
-                </div>
-            </div>
-
         </div>
-    </section>
-
-    <section class="section" id="services">
-        <h2 style="color: white;">Our Expertise</h2>
-        <div class="services-grid">
-            <div class="card"><i class="fas fa-newspaper"></i><h3>Print Media</h3></div>
-            <div class="card"><i class="fas fa-trophy"></i><h3>Cricket OOH</h3></div>
-            <div class="card"><i class="fas fa-users"></i><h3>Events</h3></div>
-            <div class="card"><i class="fas fa-tv"></i><h3>Electronic</h3></div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Brandarcher Advertising | Integrated Worldwide Feed</p>
     </footer>
 
+    <!-- 10. WhatsApp Chat Widget UI -->
+    <div class="fixed bottom-8 right-8 z-[100]">
+        <a href="https://wa.me/911204331507" target="_blank" class="flex items-center gap-4 bg-red-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-white hover:text-black transition-all duration-500 group">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+            <div class="flex flex-col leading-none">
+                <span class="text-[10px] font-black uppercase tracking-widest">Chat with us</span>
+                <span class="text-[8px] font-bold uppercase tracking-widest opacity-70 mt-1">Strategist Online</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Scripts -->
     <script>
-        // Automatic News Pairing Logic
-        const globalNews = [
-            "Global Ad spending to hit $1 Trillion in 2026.",
-            "AI-driven programmatic ads seeing 40% growth worldwide.",
-            "Super Bowl 2026: Ad slots sold out at record prices.",
-            "Sustainability in advertising: New global regulations."
-        ];
+        // Initialize Icons
+        lucide.createIcons();
 
-        const indiaNews = [
-            "Indian OOH market grows by 15% due to digital billboards.",
-            "Cricket World Cup 2026: Brands fight for stadium slots.",
-            "Digital India: Regional language ads on the rise.",
-            "OTT Platforms in India dominate prime-time ad spends."
-        ];
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-zinc-900');
+                nav.classList.remove('py-8');
+            } else {
+                nav.classList.remove('bg-black/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-zinc-900');
+                nav.classList.add('py-8');
+            }
+        });
 
-        function loadNews(listId, data) {
-            const list = document.getElementById(listId);
-            list.innerHTML = "";
-            data.forEach(item => {
-                const li = document.createElement('li');
-                li.style.padding = "10px 0";
-                li.style.borderBottom = "1px solid #222";
-                li.innerHTML = `<i class="fas fa-caret-right" style="color:#E50914; margin-right:10px;"></i> ${item}`;
-                list.appendChild(li);
+        // Reveal on Scroll Logic
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
             });
         }
-
-        // Simulating Live Update
-        window.onload = () => {
-            loadNews('global-list', globalNews);
-            loadNews('india-list', indiaNews);
-        };
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
     </script>
-
 </body>
 </html>
