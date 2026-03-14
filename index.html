@@ -27,7 +27,7 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { display: flex; animation: marquee 40s linear infinite; }
         
-        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.3s ease; display: inline-block; cursor: pointer; }
+        .btn-primary { background-color: #fff; color: #000; padding: 1.25rem 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: all 0.3s ease; display: inline-block; cursor: pointer; border: none; }
         .btn-primary:hover { background-color: var(--brand-red); color: #fff; }
         
         .parallax-bg { transform: scale(1.1); transition: transform 0.1s ease-out; }
@@ -45,7 +45,6 @@
             <a href="#services" class="hover:text-white transition">Expertise</a>
             <a href="#portfolio" class="hover:text-white transition">Work</a>
             <a href="#cricket" class="hover:text-white transition">Cricket</a>
-            <a href="#testimonials" class="hover:text-white transition">Clients</a>
             <a href="#contact" class="bg-white text-black px-6 py-3 hover:bg-red-600 hover:text-white transition">Get in Touch</a>
         </div>
         <button class="lg:hidden text-white"><i data-lucide="menu"></i></button>
@@ -130,31 +129,26 @@
             <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">360° Expertise</h2>
         </div>
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-zinc-900 border border-zinc-900">
-            <!-- Service 1 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="target" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Strategic Planning</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Deep-dive market analysis and consumer insight mapping to find your brand’s bullseye.</p>
             </div>
-            <!-- Service 2 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="zap" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Disruptive Creative</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Breaking through the noise with bold ideas that demand attention and drive action.</p>
             </div>
-            <!-- Service 3 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="globe" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">360 Media Buying</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Precision-targeted placement across digital, social, OOH, and traditional channels.</p>
             </div>
-            <!-- Service 4 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="trophy" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Cricket OOH</h3>
                 <p class="text-zinc-500 text-sm leading-relaxed">Surgical media planning for cricket stadiums, on-ground branding, and sports OOH.</p>
             </div>
-            <!-- Service 5 -->
             <div class="bg-black p-12 hover:bg-zinc-950 transition-colors group">
                 <i data-lucide="camera" class="text-red-600 mb-10 w-12 h-12 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-black uppercase tracking-widest mb-6">Content Production</h3>
@@ -163,33 +157,7 @@
         </div>
     </section>
 
-    <!-- 6. Portfolio Section -->
-    <section id="portfolio" class="py-32 px-6 reveal">
-        <div class="container mx-auto">
-            <div class="mb-24 text-right">
-                <span class="text-red-600 text-xs font-black uppercase tracking-widest">Selected Works</span>
-                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mt-4">Spatial <span class="text-outline">Innovations</span></h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="relative group overflow-hidden h-[650px] glass">
-                    <img src="https://images.unsplash.com/photo-1582213726892-2761781cd3d2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
-                        <h3 class="text-4xl font-black uppercase tracking-tighter">Hello Basmati Pavilion</h3>
-                        <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">Exhibition Architecture & Design</p>
-                    </div>
-                </div>
-                <div class="relative group overflow-hidden h-[650px] glass">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
-                        <h3 class="text-4xl font-black uppercase tracking-tighter">Isometric Brand Flow</h3>
-                        <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">Trade Show Strategy</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Cricket Media Section -->
+    <!-- 6. Cricket Media Section -->
     <section id="cricket" class="py-32 bg-zinc-950 reveal">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-20">
             <div class="flex-1">
@@ -212,8 +180,34 @@
         </div>
     </section>
 
+    <!-- 7. Portfolio Gallery -->
+    <section id="portfolio" class="py-32 px-6 reveal">
+        <div class="container mx-auto">
+            <div class="mb-24 text-right">
+                <span class="text-red-600 text-xs font-black uppercase tracking-widest">Selected Works</span>
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mt-4">Spatial <span class="text-outline">Innovations</span></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="relative group overflow-hidden h-[650px] glass">
+                    <img src="https://images.unsplash.com/photo-1582213726892-2761781cd3d2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
+                        <h3 class="text-4xl font-black uppercase tracking-tighter">Hello Basmati Pavilion</h3>
+                        <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">Exhibition Architecture & Design</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden h-[650px] glass">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=100&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black p-12 flex flex-col justify-end">
+                        <h3 class="text-4xl font-black uppercase tracking-tighter">Sunstar Global Stand</h3>
+                        <p class="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] mt-4">360° Brand Environment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 8. Metrics Section -->
-    <section class="py-32 bg-black reveal">
+    <section class="py-32 bg-zinc-950 reveal">
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             <div><div class="text-6xl font-black text-white mb-2">150+</div><div class="text-red-600 text-[10px] font-black uppercase tracking-widest">Projects</div></div>
             <div><div class="text-6xl font-black text-white mb-2">360°</div><div class="text-red-600 text-[10px] font-black uppercase tracking-widest">Solutions</div></div>
@@ -223,7 +217,7 @@
     </section>
 
     <!-- 9. Testimonials Section -->
-    <section id="testimonials" class="py-32 bg-zinc-950 reveal">
+    <section id="testimonials" class="py-32 bg-black reveal">
         <div class="container mx-auto px-6">
             <div class="mb-20">
                 <span class="text-red-600 text-xs font-black uppercase tracking-widest">Voices of Impact</span>
@@ -250,8 +244,8 @@
         </div>
     </section>
 
-    <!-- 10. Brief Generator Section -->
-    <section class="py-32 bg-black reveal">
+    <!-- 10. Brief Generator UI -->
+    <section class="py-32 bg-zinc-950 reveal">
         <div class="container mx-auto px-6 max-w-4xl text-center">
             <h2 class="text-5xl font-black uppercase tracking-tighter mb-8">Synthesize Your <span class="text-red-600">Brief</span></h2>
             <p class="text-zinc-500 mb-12 uppercase tracking-widest text-xs">AI-Powered Strategic Foundation</p>
@@ -265,7 +259,7 @@
         </div>
     </section>
 
-    <!-- 11. Footer (Updated Phone & Branches) -->
+    <!-- 11. Footer (Updated Phone, Branches & Visitor Counter) -->
     <footer id="contact" class="bg-black pt-32 pb-12 border-t border-zinc-900 reveal">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-32">
@@ -284,24 +278,12 @@
                     <div class="mt-20">
                         <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-10">Branch Network</h4>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-12">
-                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                                <span class="w-1.5 h-1.5 bg-red-600"></span> Lucknow
-                            </div>
-                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                                <span class="w-1.5 h-1.5 bg-red-600"></span> Noida
-                            </div>
-                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                                <span class="w-1.5 h-1.5 bg-red-600"></span> Ludhiana
-                            </div>
-                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                                <span class="w-1.5 h-1.5 bg-red-600"></span> Vadodara
-                            </div>
-                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                                <span class="w-1.5 h-1.5 bg-red-600"></span> Dehradun
-                            </div>
-                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                                <span class="w-1.5 h-1.5 bg-red-600"></span> Mumbai
-                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"><span class="w-1.5 h-1.5 bg-red-600"></span> Lucknow</div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"><span class="w-1.5 h-1.5 bg-red-600"></span> Noida</div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"><span class="w-1.5 h-1.5 bg-red-600"></span> Ludhiana</div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"><span class="w-1.5 h-1.5 bg-red-600"></span> Vadodara</div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"><span class="w-1.5 h-1.5 bg-red-600"></span> Dehradun</div>
+                            <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"><span class="w-1.5 h-1.5 bg-red-600"></span> Mumbai</div>
                         </div>
                     </div>
                 </div>
@@ -315,18 +297,24 @@
                 </div>
             </div>
             
+            <!-- Visitor Counter UI -->
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900 gap-8">
                 <div class="flex items-center gap-8">
                     <div class="text-2xl font-black tracking-tighter">
                         <span class="bg-red-600 px-1">BRAND</span>ARCHER
                     </div>
-                    <p class="text-zinc-600 text-[9px] uppercase tracking-[0.4em]">© 2026 BrandArcher Advertising. Precision Engineered.</p>
+                    <div class="h-8 w-[1px] bg-zinc-800 hidden md:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-600">Live Visitor Pulse</span>
+                        <span id="visitor-count" class="text-xl font-black text-white">000,152</span>
+                    </div>
                 </div>
+                <p class="text-zinc-600 text-[9px] uppercase tracking-[0.4em]">© 2026 BrandArcher Advertising. Precision Engineered.</p>
             </div>
         </div>
     </footer>
 
-    <!-- 12. WhatsApp Chat Widget -->
+    <!-- 12. WhatsApp Chat Widget UI -->
     <div class="fixed bottom-8 right-8 z-[100]">
         <a href="https://wa.me/911204331507" target="_blank" class="flex items-center gap-4 bg-red-600 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-white hover:text-black transition-all duration-500 group">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
@@ -339,7 +327,10 @@
 
     <!-- Scripts -->
     <script>
+        // Initialize Icons
         lucide.createIcons();
+
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -359,13 +350,26 @@
             if(img) img.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
         });
 
+        // Reveal on Scroll Logic
         const reveal = () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
             });
         }
         window.addEventListener('scroll', reveal);
-        reveal();
+        reveal(); // Initial check
+
+        // Visitor Counter Simulation
+        let count = 152;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 2);
+            document.getElementById('visitor-count').innerText = "000," + count.toString().padStart(3, '0');
+        }, 5000);
     </script>
 </body>
 </html>
